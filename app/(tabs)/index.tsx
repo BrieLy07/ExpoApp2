@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 import {
   ActivityIndicator,
+  Alert,
   Animated,
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -36,7 +38,7 @@ export default function App() {
 
     const timer = setTimeout(() => {
       setMostrarSplash(false);
-    }, 3500);
+    }, 3000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -63,14 +65,12 @@ export default function App() {
             },
           ]}
         >
-          Selección Ecuatoriana
+          Ecuador - La Tri
         </Animated.Text>
-
-        <Text style={styles.subtituloSplash}>La Tri</Text>
 
         <ActivityIndicator size="large" color="#002255" style={styles.loader} />
 
-        <Text style={styles.cargando}>Cargando experiencia...</Text>
+        <Text style={styles.cargando}>Cargando aplicación...</Text>
       </View>
     );
   }
@@ -98,11 +98,23 @@ export default function App() {
       </View>
 
       <View style={styles.infoBox}>
-        <Text style={styles.info}>🏟 Estadio: Rodrigo Paz Delgado</Text>
         <Text style={styles.info}>🌎 Confederación: CONMEBOL</Text>
+        <Text style={styles.info}>👨‍🏫 Entrenador: Sebastián Beccacece</Text>
+        <Text style={styles.info}>🏟 Estadio: Rodrigo Paz Delgado</Text>
         <Text style={styles.info}>🇪🇨 Colores: Amarillo, azul y rojo</Text>
-        <Text style={styles.info}>⚽ Apodo: La Tri</Text>
       </View>
+
+      <TouchableOpacity
+        style={styles.boton}
+        onPress={() =>
+          Alert.alert(
+            'La Tri',
+            '¡Vamos Ecuador! Esta es una aplicación básica creada con React Native y Expo.'
+          )
+        }
+      >
+        <Text style={styles.textoBoton}>Ver mensaje</Text>
+      </TouchableOpacity>
     </View>
   );
 }
@@ -127,12 +139,6 @@ const styles = StyleSheet.create({
     color: '#002255',
     textAlign: 'center',
   },
-  subtituloSplash: {
-    fontSize: 24,
-    color: '#E5073A',
-    fontWeight: 'bold',
-    marginTop: 8,
-  },
   loader: {
     marginTop: 30,
   },
@@ -143,14 +149,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   home: {
-  flex: 1,
-  backgroundColor: '#002255',
-  alignItems: 'center',
-  paddingHorizontal: 24,
-  paddingTop: 80,
+    flex: 1,
+    backgroundColor: '#002255',
+    alignItems: 'center',
+    paddingHorizontal: 24,
+    paddingTop: 80,
   },
   banner: {
     width: '100%',
+    marginTop: 40,
     backgroundColor: '#FFCE00',
     alignItems: 'center',
     paddingVertical: 35,
@@ -163,13 +170,6 @@ const styles = StyleSheet.create({
     height: 135,
     resizeMode: 'contain',
     marginBottom: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.3,
-    shadowRadius: 8,
   },
   tituloHome: {
     fontSize: 34,
@@ -188,13 +188,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     width: '100%',
     marginBottom: 20,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 4,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 6,
     elevation: 8,
   },
   cardTitulo: {
@@ -221,5 +214,17 @@ const styles = StyleSheet.create({
     color: '#002255',
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  boton: {
+    marginTop: 20,
+    backgroundColor: '#E5073A',
+    paddingVertical: 14,
+    paddingHorizontal: 40,
+    borderRadius: 30,
+  },
+  textoBoton: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+    fontSize: 16,
   },
 });
