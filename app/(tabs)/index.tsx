@@ -1,98 +1,225 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { useEffect, useRef, useState } from 'react';
+import {
+  ActivityIndicator,
+  Animated,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+export default function App() {
+  const [mostrarSplash, setMostrarSplash] = useState(true);
 
-export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+  const escalaLogo = useRef(new Animated.Value(0.7)).current;
+  const opacidadLogo = useRef(new Animated.Value(0)).current;
+  const movimientoTitulo = useRef(new Animated.Value(30)).current;
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.spring(escalaLogo, {
+        toValue: 1,
+        friction: 3,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacidadLogo, {
+        toValue: 1,
+        duration: 1200,
+        useNativeDriver: true,
+      }),
+      Animated.timing(movimientoTitulo, {
+        toValue: 0,
+        duration: 1000,
+        useNativeDriver: true,
+      }),
+    ]).start();
+
+    const timer = setTimeout(() => {
+      setMostrarSplash(false);
+    }, 3500);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (mostrarSplash) {
+    return (
+      <View style={styles.splash}>
+        <Animated.Image
+          source={require('../../assets/images/logo-ecuador.png')}
+          style={[
+            styles.logoSplash,
+            {
+              opacity: opacidadLogo,
+              transform: [{ scale: escalaLogo }],
+            },
+          ]}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <Animated.Text
+          style={[
+            styles.tituloSplash,
+            {
+              transform: [{ translateY: movimientoTitulo }],
+            },
+          ]}
+        >
+          Selección Ecuatoriana
+        </Animated.Text>
+
+        <Text style={styles.subtituloSplash}>La Tri</Text>
+
+        <ActivityIndicator size="large" color="#002255" style={styles.loader} />
+
+        <Text style={styles.cargando}>Cargando experiencia...</Text>
+      </View>
+    );
+  }
+
+  return (
+    <View style={styles.home}>
+      <View style={styles.banner}>
+        <Image
+          source={require('../../assets/images/logo-ecuador.png')}
+          style={styles.logoHome}
+        />
+
+        <Text style={styles.tituloHome}>Ecuador</Text>
+        <Text style={styles.subtituloHome}>Selección Nacional de Fútbol</Text>
+      </View>
+
+      <View style={styles.card}>
+        <Text style={styles.cardTitulo}>Bienvenido a La Tri</Text>
+
+        <Text style={styles.texto}>
+          La Selección Ecuatoriana representa al país en competencias
+          internacionales de fútbol. Es conocida como “La Tri” por los colores
+          de la bandera nacional: amarillo, azul y rojo.
+        </Text>
+      </View>
+
+      <View style={styles.infoBox}>
+        <Text style={styles.info}>🏟 Estadio: Rodrigo Paz Delgado</Text>
+        <Text style={styles.info}>🌎 Confederación: CONMEBOL</Text>
+        <Text style={styles.info}>🇪🇨 Colores: Amarillo, azul y rojo</Text>
+        <Text style={styles.info}>⚽ Apodo: La Tri</Text>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
+  splash: {
+    flex: 1,
+    backgroundColor: '#FFCE00',
+    justifyContent: 'center',
     alignItems: 'center',
-    gap: 8,
+    padding: 20,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  logoSplash: {
+    width: 190,
+    height: 190,
+    resizeMode: 'contain',
+    marginBottom: 25,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  tituloSplash: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    color: '#002255',
+    textAlign: 'center',
+  },
+  subtituloSplash: {
+    fontSize: 24,
+    color: '#E5073A',
+    fontWeight: 'bold',
+    marginTop: 8,
+  },
+  loader: {
+    marginTop: 30,
+  },
+  cargando: {
+    marginTop: 12,
+    fontSize: 15,
+    color: '#002255',
+    fontWeight: '600',
+  },
+  home: {
+  flex: 1,
+  backgroundColor: '#002255',
+  alignItems: 'center',
+  paddingHorizontal: 24,
+  paddingTop: 80,
+  },
+  banner: {
+    width: '100%',
+    backgroundColor: '#FFCE00',
+    alignItems: 'center',
+    paddingVertical: 35,
+    borderBottomLeftRadius: 35,
+    borderBottomRightRadius: 35,
+    marginBottom: 25,
+  },
+  logoHome: {
+    width: 135,
+    height: 135,
+    resizeMode: 'contain',
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 5,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+  },
+  tituloHome: {
+    fontSize: 34,
+    fontWeight: 'bold',
+    color: '#002255',
+  },
+  subtituloHome: {
+    fontSize: 16,
+    color: '#E5073A',
+    fontWeight: 'bold',
+    marginTop: 5,
+  },
+  card: {
+    backgroundColor: '#FFFFFF',
+    padding: 22,
+    borderRadius: 20,
+    width: '100%',
+    marginBottom: 20,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 6,
+    elevation: 8,
+  },
+  cardTitulo: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: '#E5073A',
+    textAlign: 'center',
+    marginBottom: 12,
+  },
+  texto: {
+    fontSize: 16,
+    color: '#333333',
+    textAlign: 'center',
+    lineHeight: 24,
+  },
+  infoBox: {
+    backgroundColor: '#D3AA75',
+    padding: 18,
+    borderRadius: 18,
+    width: '100%',
+  },
+  info: {
+    fontSize: 16,
+    color: '#002255',
+    fontWeight: 'bold',
+    marginBottom: 10,
   },
 });
