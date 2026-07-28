@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -8,7 +8,7 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
+} from "react-native";
 
 export default function App() {
   const [mostrarSplash, setMostrarSplash] = useState(true);
@@ -47,7 +47,7 @@ export default function App() {
     return (
       <View style={styles.splash}>
         <Animated.Image
-          source={require('../../assets/images/logo-ecuador.png')}
+          source={require("../../assets/images/logo-ecuador.png")}
           style={[
             styles.logoSplash,
             {
@@ -75,11 +75,13 @@ export default function App() {
     );
   }
 
+  //Si es verdadero el if devuelve el splash, si no ignora y va al return para mostrar el Home
+  //Tiene 4 bloques, banner, card, infobox, boton
   return (
     <View style={styles.home}>
       <View style={styles.banner}>
         <Image
-          source={require('../../assets/images/logo-ecuador.png')}
+          source={require("../../assets/images/logo-ecuador.png")}
           style={styles.logoHome}
         />
 
@@ -108,8 +110,8 @@ export default function App() {
         style={styles.boton}
         onPress={() =>
           Alert.alert(
-            'La Tri',
-            '¡Vamos Ecuador! Esta es una aplicación básica creada con React Native y Expo.'
+            "La Tri",
+            "¡Vamos Ecuador! Esta es una aplicación básica creada con React Native y Expo.",
           )
         }
       >
@@ -122,22 +124,22 @@ export default function App() {
 const styles = StyleSheet.create({
   splash: {
     flex: 1,
-    backgroundColor: '#FFCE00',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#FFCE00",
+    justifyContent: "center",
+    alignItems: "center",
     padding: 20,
   },
   logoSplash: {
     width: 190,
     height: 190,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginBottom: 25,
   },
   tituloSplash: {
     fontSize: 30,
-    fontWeight: 'bold',
-    color: '#002255',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#002255",
+    textAlign: "center",
   },
   loader: {
     marginTop: 30,
@@ -145,21 +147,21 @@ const styles = StyleSheet.create({
   cargando: {
     marginTop: 12,
     fontSize: 15,
-    color: '#002255',
-    fontWeight: '600',
+    color: "#002255",
+    fontWeight: "600",
   },
   home: {
     flex: 1,
-    backgroundColor: '#002255',
-    alignItems: 'center',
+    backgroundColor: "#002255",
+    alignItems: "center",
     paddingHorizontal: 24,
     paddingTop: 80,
   },
   banner: {
-    width: '100%',
+    width: "100%",
     marginTop: 40,
-    backgroundColor: '#FFCE00',
-    alignItems: 'center',
+    backgroundColor: "#FFCE00",
+    alignItems: "center",
     paddingVertical: 35,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
@@ -168,63 +170,63 @@ const styles = StyleSheet.create({
   logoHome: {
     width: 135,
     height: 135,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginBottom: 10,
   },
   tituloHome: {
     fontSize: 34,
-    fontWeight: 'bold',
-    color: '#002255',
+    fontWeight: "bold",
+    color: "#002255",
   },
   subtituloHome: {
     fontSize: 16,
-    color: '#E5073A',
-    fontWeight: 'bold',
+    color: "#E5073A",
+    fontWeight: "bold",
     marginTop: 5,
   },
   card: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     padding: 22,
     borderRadius: 20,
-    width: '100%',
+    width: "100%",
     marginBottom: 20,
     elevation: 8,
   },
   cardTitulo: {
     fontSize: 22,
-    fontWeight: 'bold',
-    color: '#E5073A',
-    textAlign: 'center',
+    fontWeight: "bold",
+    color: "#E5073A",
+    textAlign: "center",
     marginBottom: 12,
   },
   texto: {
     fontSize: 16,
-    color: '#333333',
-    textAlign: 'center',
+    color: "#333333",
+    textAlign: "center",
     lineHeight: 24,
   },
   infoBox: {
-    backgroundColor: '#D3AA75',
+    backgroundColor: "#D3AA75",
     padding: 18,
     borderRadius: 18,
-    width: '100%',
+    width: "100%",
   },
   info: {
     fontSize: 16,
-    color: '#002255',
-    fontWeight: 'bold',
+    color: "#002255",
+    fontWeight: "bold",
     marginBottom: 10,
   },
   boton: {
     marginTop: 20,
-    backgroundColor: '#E5073A',
+    backgroundColor: "#E5073A",
     paddingVertical: 14,
     paddingHorizontal: 40,
     borderRadius: 30,
   },
   textoBoton: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
+    color: "#FFFFFF",
+    fontWeight: "bold",
     fontSize: 16,
   },
 });
