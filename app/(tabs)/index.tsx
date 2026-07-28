@@ -4,6 +4,7 @@ import {
   Alert,
   Animated,
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
@@ -78,7 +79,11 @@ export default function App() {
   //Si es verdadero el if devuelve el splash, si no ignora y va al return para mostrar el Home
   //Tiene 4 bloques, banner, card, infobox, boton
   return (
-    <View style={styles.home}>
+    <ScrollView
+      style={styles.home}
+      contentContainerStyle={styles.homeContent}
+      showsVerticalScrollIndicator={false}
+    >
       <View style={styles.banner}>
         <Image
           source={require("../../assets/images/logo-ecuador.png")}
@@ -117,7 +122,7 @@ export default function App() {
       >
         <Text style={styles.textoBoton}>Ver mensaje</Text>
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -153,16 +158,20 @@ const styles = StyleSheet.create({
   home: {
     flex: 1,
     backgroundColor: "#002255",
+  },
+
+  homeContent: {
     alignItems: "center",
     paddingHorizontal: 24,
-    paddingTop: 80,
+    paddingTop: 30,
+    paddingBottom: 120,
   },
   banner: {
     width: "100%",
-    marginTop: 40,
+    marginTop: 15,
     backgroundColor: "#FFCE00",
     alignItems: "center",
-    paddingVertical: 35,
+    paddingVertical: 25,
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
     marginBottom: 25,
