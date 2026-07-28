@@ -1,50 +1,171 @@
-# Welcome to your Expo app 👋
+# ExpoApp2 – La Tri
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Aplicación móvil desarrollada con React Native y Expo. El proyecto presenta una landing page de la Selección Ecuatoriana de Fútbol, con una pantalla de bienvenida animada y una vista principal con información de “La Tri”.
 
-## Get started
+## Funcionalidades
 
-1. Install dependencies
+- Splash screen animado al iniciar la aplicación.
+- Animación de escala, opacidad y movimiento.
+- Indicador de carga.
+- Landing page con información de la Selección Ecuatoriana.
+- Botón interactivo con una alerta.
+- Navegación inferior mediante Expo Router.
+- Diseño adaptable para Android, iOS y web.
 
-   ```bash
-   npm install
-   ```
+## Tecnologías utilizadas
 
-2. Start the app
+- React
+- React Native
+- Expo
+- Expo Router
+- TypeScript
 
-   ```bash
-   npx expo start
-   ```
+## Estructura principal
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```text
+ExpoApp2/
+├── app/
+│   ├── _layout.tsx
+│   ├── modal.tsx
+│   └── (tabs)/
+│       ├── _layout.tsx
+│       ├── index.tsx
+│       └── explore.tsx
+├── assets/
+│   └── images/
+│       └── logo-ecuador.png
+├── components/
+├── constants/
+├── hooks/
+├── app.json
+├── package.json
+└── tsconfig.json
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+El archivo principal de la landing page es:
 
-## Learn more
+```text
+app/(tabs)/index.tsx
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+En este archivo se encuentran:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- El estado que muestra u oculta el splash.
+- El temporizador de inicio.
+- Las animaciones.
+- El contenido de la pantalla principal.
+- El botón y su alerta.
+- Los estilos, tamaños y colores.
 
-## Join the community
+La configuración de los botones inferiores se encuentra en:
 
-Join our community of developers creating universal apps.
+```text
+app/(tabs)/_layout.tsx
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Requisitos
+
+Antes de ejecutar el proyecto, instala:
+
+- Node.js en una versión LTS.
+- npm, incluido con Node.js.
+- Expo Go en el teléfono, si deseas probar la aplicación en un dispositivo físico.
+
+Puedes comprobar la instalación con:
+
+```bash
+node --version
+npm --version
+```
+
+## Instalación
+
+Clona el repositorio:
+
+```bash
+git clone https://github.com/BrieLy07/ExpoApp2.git
+```
+
+Ingresa al proyecto:
+
+```bash
+cd ExpoApp2
+```
+
+Instala las dependencias:
+
+```bash
+npm install
+```
+
+## Ejecución
+
+Inicia el servidor de Expo:
+
+```bash
+npx expo start
+```
+
+Cuando aparezca el menú de Expo puedes:
+
+- Escanear el código QR con Expo Go.
+- Presionar `a` para abrir Android.
+- Presionar `i` para abrir iOS en macOS.
+- Presionar `w` para abrir la versión web.
+
+También puedes ejecutar directamente:
+
+```bash
+npm run android
+npm run ios
+npm run web
+```
+
+## Trabajar en la rama de práctica
+
+Antes de realizar cambios, verifica que estás en la rama correspondiente:
+
+```bash
+git switch practica-prueba
+git branch
+```
+
+Guarda tus cambios con:
+
+```bash
+git add .
+git commit -m "Descripción del cambio realizado"
+git push
+```
+
+## Solución de problemas
+
+Si Expo presenta errores de caché, inicia el proyecto limpiándola:
+
+```bash
+npx expo start --clear
+```
+
+Si faltan dependencias o aparecen errores después de descargar el proyecto:
+
+```bash
+npm install
+npx expo start
+```
+
+Si el teléfono no puede conectarse por la red local:
+
+```bash
+npx expo start --tunnel
+```
+
+## Cambios comunes para practicar
+
+- Cambiar la duración del splash en `setTimeout`.
+- Modificar textos, imágenes, colores y tamaños.
+- Cambiar el nombre de los botones inferiores.
+- Agregar nuevos botones con `TouchableOpacity`.
+- Modificar el mensaje mostrado con `Alert.alert`.
+- Agregar nuevas pantallas y navegación.
+- Reutilizar información mediante arreglos y `.map()`.
+
