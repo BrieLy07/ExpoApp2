@@ -1,3 +1,4 @@
+import { router } from "expo-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ActivityIndicator,
@@ -121,6 +122,13 @@ export default function App() {
         }
       >
         <Text style={styles.textoBoton}>Ver mensaje</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity
+        style={styles.boton}
+        onPress={() => router.push("/detalles")}
+      >
+        <Text style={styles.textoBoton}>Ver nuestra historia</Text>
       </TouchableOpacity>
     </ScrollView>
   );
