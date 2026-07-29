@@ -31,7 +31,7 @@ ExpoApp2/
 │       ├── _layout.tsx
 │       ├── index.tsx
 │       └── explore.tsx
-        └── detaller.tsx
+        └── detalles.tsx
 ├── assets/
 │   └── images/
 │       └── logo-argentina.png
@@ -161,13 +161,3 @@ Si el teléfono no puede conectarse por la red local:
 ```bash
 npx expo start --tunnel
 ```
-
-## Cambios comunes para practicar
-
-- Cambiar la duración del splash en `setTimeout`.
-- Modificar textos, imágenes, colores y tamaños.
-- Cambiar el nombre de los botones inferiores.
-- Agregar nuevos botones con `TouchableOpacity`.
-- Modificar el mensaje mostrado con `Alert.alert`.
-- Agregar nuevas pantallas y navegación.
-- Reutilizar información mediante arreglos y `.map()`.
