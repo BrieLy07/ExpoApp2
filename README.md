@@ -1,13 +1,13 @@
-# ExpoApp2 – La Tri
+# ExpoApp2 – La Roja
 
-Aplicación móvil desarrollada con React Native y Expo. El proyecto presenta una landing page de la Selección Ecuatoriana de Fútbol, con una pantalla de bienvenida animada y una vista principal con información de “La Tri”.
+Aplicación móvil desarrollada con React Native y Expo. El proyecto presenta una landing page de la Selección Española de Fútbol, con una pantalla de bienvenida animada y una vista principal con información de “La Roja”.
 
 ## Funcionalidades
 
 - Splash screen animado al iniciar la aplicación.
 - Animación de escala, opacidad y movimiento.
 - Indicador de carga.
-- Landing page con información de la Selección Ecuatoriana.
+- Landing page con información de la Selección Española.
 - Botón interactivo con una alerta.
 - Navegación inferior mediante Expo Router.
 - Diseño adaptable para Android, iOS y web.
@@ -31,9 +31,12 @@ ExpoApp2/
 │       ├── _layout.tsx
 │       ├── index.tsx
 │       └── explore.tsx
+        └── detaller.tsx
 ├── assets/
 │   └── images/
-│       └── logo-ecuador.png
+│       └── logo-argentina.png
+        └── logo-españa.png
+        └── video-gm.mp4
 ├── components/
 ├── constants/
 ├── hooks/
@@ -121,12 +124,12 @@ npm run ios
 npm run web
 ```
 
-## Trabajar en la rama de práctica
+## Trabajar en la rama del éxamen
 
 Antes de realizar cambios, verifica que estás en la rama correspondiente:
 
 ```bash
-git switch practica-prueba
+git switch examen
 git branch
 ```
 
@@ -168,4 +171,3 @@ npx expo start --tunnel
 - Modificar el mensaje mostrado con `Alert.alert`.
 - Agregar nuevas pantallas y navegación.
 - Reutilizar información mediante arreglos y `.map()`.
-

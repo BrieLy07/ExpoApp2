@@ -29,7 +29,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="explore"
         options={{
-          title: "La Tri",
+          title: "La Roja",
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="paperplane.fill" color={color} />
           ),
@@ -39,7 +39,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="detalles"
         options={{
-          title: "Historia",
+          title: "Nosotros",
         }}
       />
     </Tabs>

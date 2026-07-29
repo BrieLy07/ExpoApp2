@@ -49,7 +49,7 @@ export default function App() {
     return (
       <View style={styles.splash}>
         <Animated.Image
-          source={require("../../assets/images/logo-ecuador.png")}
+          source={require("../../assets/images/logo-españa.png")}
           style={[
             styles.logoSplash,
             {
@@ -67,7 +67,7 @@ export default function App() {
             },
           ]}
         >
-          Ecuador - La Tri
+          España La Roja
         </Animated.Text>
 
         <ActivityIndicator size="large" color="#002255" style={styles.loader} />
@@ -87,38 +87,42 @@ export default function App() {
     >
       <View style={styles.banner}>
         <Image
-          source={require("../../assets/images/logo-ecuador.png")}
+          source={require("../../assets/images/logo-españa.png")}
           style={styles.logoHome}
         />
 
-        <Text style={styles.tituloHome}>Ecuador</Text>
-        <Text style={styles.subtituloHome}>Selección Nacional de Fútbol</Text>
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.cardTitulo}>Bienvenido a La Tri</Text>
-
-        <Text style={styles.texto}>
-          La Selección Ecuatoriana representa al país en competencias
-          internacionales de fútbol. Es conocida como “La Tri” por los colores
-          de la bandera nacional: amarillo, azul y rojo.
+        <Text style={styles.tituloHome}>España</Text>
+        <Text style={styles.subtituloHome}>
+          Real Federación Española de Fútbol
         </Text>
       </View>
 
-      <View style={styles.infoBox}>
-        <Text style={styles.info}>🌎 Confederación: CONMEBOL</Text>
-        <Text style={styles.info}>👨‍🏫 Entrenador: Sebastián Beccacece</Text>
-        <Text style={styles.info}>🏟 Estadio: Rodrigo Paz Delgado</Text>
-        <Text style={styles.info}>🇪🇨 Colores: Amarillo, azul y rojo</Text>
+      <View style={styles.card}>
+        <Text style={styles.cardTitulo}>Bienvenido a la Roja App</Text>
+
+        <Text style={styles.texto}>
+          La Selección Española representa a su país en competencias
+          internacionales de fútbol. Es conocida como “La Roja” por los colores
+          de la bandera nacional: Rojo y Amarillo
+        </Text>
+      </View>
+
+      <View style={styles.banner}>
+        <Image
+          source={require("../../assets/images/logo-argentina.png")}
+          style={styles.logoHome}
+        />
+
+        <Text style={styles.tituloHome}>Argentina</Text>
+        <Text style={styles.subtituloHome}>
+          Subcampeón de la Copa Mundial 2026
+        </Text>
       </View>
 
       <TouchableOpacity
         style={styles.boton}
         onPress={() =>
-          Alert.alert(
-            "La Tri",
-            "¡Vamos Ecuador! Esta es una aplicación básica creada con React Native y Expo.",
-          )
+          Alert.alert("La Roja", "¡Vamos España! Este es mi examen jeje.")
         }
       >
         <Text style={styles.textoBoton}>Ver mensaje</Text>
@@ -128,7 +132,7 @@ export default function App() {
         style={styles.boton}
         onPress={() => router.push("/detalles")}
       >
-        <Text style={styles.textoBoton}>Ver nuestra historia</Text>
+        <Text style={styles.textoBoton}>Ver nuestro video</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -165,7 +169,7 @@ const styles = StyleSheet.create({
   },
   home: {
     flex: 1,
-    backgroundColor: "#002255",
+    backgroundColor: "#86a2cc",
   },
 
   homeContent: {
@@ -177,7 +181,7 @@ const styles = StyleSheet.create({
   banner: {
     width: "100%",
     marginTop: 15,
-    backgroundColor: "#FFCE00",
+    backgroundColor: "#1de4e4",
     alignItems: "center",
     paddingVertical: 25,
     borderBottomLeftRadius: 35,
@@ -185,8 +189,8 @@ const styles = StyleSheet.create({
     marginBottom: 25,
   },
   logoHome: {
-    width: 135,
-    height: 135,
+    width: 120,
+    height: 120,
     resizeMode: "contain",
     marginBottom: 10,
   },
@@ -223,7 +227,7 @@ const styles = StyleSheet.create({
     lineHeight: 24,
   },
   infoBox: {
-    backgroundColor: "#D3AA75",
+    backgroundColor: "#f8f4f0",
     padding: 18,
     borderRadius: 18,
     width: "100%",

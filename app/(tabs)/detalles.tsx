@@ -1,4 +1,5 @@
 import { router } from "expo-router";
+import { useVideoPlayer, VideoView } from "expo-video";
 import {
     ScrollView,
     StyleSheet,
@@ -8,58 +9,45 @@ import {
 } from "react-native";
 
 export default function HistoriaScreen() {
+  const player = useVideoPlayer(
+    require("../../assets/images/video-gm.mp4"),
+    (player) => {
+      player.loop = true;
+      player.muted = true;
+      player.play();
+    },
+  );
+
   return (
     <ScrollView
       style={styles.container}
       contentContainerStyle={styles.contenido}
       showsVerticalScrollIndicator={false}
     >
-      <Text style={styles.titulo}>Historia de La Tri</Text>
+      <Text style={styles.titulo}>Sobre mí</Text>
       <Text style={styles.subtitulo}>
-        Participaciones de Ecuador en los mundiales
+        Estudiante de décimo semestre, Sistemas de Información
       </Text>
 
-      <View style={styles.card}>
-        <Text style={styles.anio}>2002</Text>
-        <Text style={styles.cardTitulo}>Primer Mundial</Text>
-        <Text style={styles.texto}>
-          Ecuador participó por primera vez en una Copa Mundial, realizada en
-          Corea del Sur y Japón.
-        </Text>
-      </View>
+      <Text style={styles.tituloHome}>Gabriel Mendoza</Text>
+      <Text style={styles.subtituloHome}>Dispositivos Moviles</Text>
 
-      <View style={styles.cardDestacada}>
-        <Text style={styles.anioDestacado}>2006</Text>
-        <Text style={styles.cardTitulo}>Mejor participación</Text>
-        <Text style={styles.texto}>
-          En Alemania 2006, La Tri avanzó a los octavos de final, logrando su
-          mejor participación mundialista.
-        </Text>
+      <View style={styles.banner}>
+        <VideoView
+          player={player}
+          style={styles.videoHome}
+          nativeControls={false}
+          contentFit="cover"
+        />
       </View>
 
       <View style={styles.card}>
-        <Text style={styles.anio}>2014</Text>
-        <Text style={styles.cardTitulo}>Mundial de Brasil</Text>
-        <Text style={styles.texto}>
-          Ecuador regresó a un Mundial y compitió en la fase de grupos frente a
-          Suiza, Honduras y Francia.
+        <Text style={styles.anio}>2026</Text>
+        <Text style={styles.cardTitulo}>
+          Ingenieria Sistemas de Información
         </Text>
-      </View>
-
-      <View style={styles.card}>
-        <Text style={styles.anio}>2022</Text>
-        <Text style={styles.cardTitulo}>Mundial de Catar</Text>
         <Text style={styles.texto}>
-          La selección disputó el partido inaugural y representó nuevamente al
-          país en la máxima competencia internacional.
-        </Text>
-      </View>
-
-      <View style={styles.resumen}>
-        <Text style={styles.resumenTitulo}>🏆 Dato destacado</Text>
-        <Text style={styles.resumenTexto}>
-          La mejor actuación de Ecuador fue llegar a los octavos de final en
-          Alemania 2006.
+          Loco por terminar la carrera y feliz por casi ya alcanzarlo.
         </Text>
       </View>
 
@@ -73,7 +61,7 @@ export default function HistoriaScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#002255",
+    backgroundColor: "#4679c5",
   },
 
   contenido: {
@@ -177,5 +165,39 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 16,
     fontWeight: "bold",
+  },
+
+  banner: {
+    width: "100%",
+    marginTop: 15,
+    backgroundColor: "#1de4e4",
+    alignItems: "center",
+    paddingVertical: 25,
+    borderBottomLeftRadius: 35,
+    borderBottomRightRadius: 35,
+    marginBottom: 25,
+  },
+  logoHome: {
+    width: 135,
+    height: 135,
+    resizeMode: "contain",
+    marginBottom: 10,
+  },
+  tituloHome: {
+    fontSize: 34,
+    fontWeight: "bold",
+    color: "#002255",
+  },
+  subtituloHome: {
+    fontSize: 16,
+    color: "#E5073A",
+    fontWeight: "bold",
+    marginTop: 5,
+  },
+
+  videoHome: {
+    width: "100%",
+    height: 220,
+    borderRadius: 20,
   },
 });

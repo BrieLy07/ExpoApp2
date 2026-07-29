@@ -14,31 +14,32 @@ export default function ExploreScreen() {
       contentContainerStyle={styles.contenido}
       showsVerticalScrollIndicator={false}
     >
-      <Text style={styles.titulo}>Conoce a La Tri</Text>
+      <Text style={styles.titulo}>Conoce a la Roja</Text>
 
       <View style={styles.card}>
-        <Text style={styles.cardTitulo}>🇪🇨 Nuestra selección</Text>
+        <Text style={styles.cardTitulo}>La Sele</Text>
 
         <Text style={styles.texto}>
-          La Selección Ecuatoriana representa al país en las principales
-          competencias internacionales de fútbol.
+          La Selección Española representa a su país en las principales
+          competencias internacionales de fútbol y es la campeona actual del
+          mundial 2026
         </Text>
       </View>
 
       <View style={styles.card}>
         <Text style={styles.cardTitulo}>⚽ Identidad</Text>
 
-        <Text style={styles.dato}>Apodo: La Tri</Text>
-        <Text style={styles.dato}>Confederación: CONMEBOL</Text>
-        <Text style={styles.dato}>Colores: Amarillo, azul y rojo</Text>
+        <Text style={styles.dato}>Apodo: La Roja</Text>
+        <Text style={styles.dato}>Confederación: UEFA</Text>
+        <Text style={styles.dato}>Colores: Amarillo y rojo</Text>
       </View>
 
       <View style={styles.card}>
         <Text style={styles.cardTitulo}>🏆 Objetivo</Text>
 
         <Text style={styles.texto}>
-          Competir al máximo nivel y representar con orgullo a todos los
-          ecuatorianos.
+          Competir al máximo nivel y representar con orgullo a su gente,
+          queriendo su tercera copa.
         </Text>
       </View>
 
@@ -46,7 +47,7 @@ export default function ExploreScreen() {
         style={styles.boton}
         onPress={() => router.push("/detalles")}
       >
-        <Text style={styles.textoBoton}>Conocer más</Text>
+        <Text style={styles.textoBoton}>Mira nuestro vídeo</Text>
       </TouchableOpacity>
     </ScrollView>
   );
@@ -55,7 +56,7 @@ export default function ExploreScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#002255",
+    backgroundColor: "#7ea3db",
   },
 
   contenido: {
